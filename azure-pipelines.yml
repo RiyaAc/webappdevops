@@ -28,3 +28,15 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  inputs:
+    azureSubscription: 'Free Trial (8a07dfc0-5268-4db2-8a16-4b3751870ae8)'
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactsStagingDirectory)'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+        targetPath: '$(Build.ArtifactsStagingDirectory)'
+        artifact: 'webappdevopsartifacts'
+        publishLocation: 'pipeline'
