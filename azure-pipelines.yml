@@ -42,6 +42,6 @@ steps:
         publishLocation: 'pipeline'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/owasp-app/OWASPToNunit3.xslt'
+    PathtoPublish: 'C:\Users\Riya\Downloads\Demo\3\s\OWASPToNUnit3.xslt'
     ArtifactName: 'xslt-artifact'
     
