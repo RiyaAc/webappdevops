@@ -40,3 +40,8 @@ steps:
         targetPath: '$(Build.ArtifactsStagingDirectory)'
         artifact: 'webappdevopsartifacts'
         publishLocation: 'pipeline'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/owasp-app/OWASPToNunit3.xslt'
+    ArtifactName: 'xslt-artifact'
+    
